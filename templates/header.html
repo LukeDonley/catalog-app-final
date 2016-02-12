@@ -1,0 +1,76 @@
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+    <div class="container topnav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand topnav" href="{{url_for('showCatalog')}}">Catalog App</a>
+        </div>
+        
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav nav-pills navbar-right">
+                {%if 'username' not in session %}
+                <li>
+                    <a href="{{url_for('showLogin')}}">Login</a>
+                </li>
+            </ul>
+                
+                {% else %}
+                    
+                <!--Dropdown menu for New Category / New Item-->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">New<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{url_for('newCategory')}}">New Category</a>
+                            </li>
+                            <li>
+                                <a href="{{url_for('newItem')}}">New Item</a>
+                            </li>
+                        </ul>
+                </li>
+
+                <!--Dropdown menu for Edit Category / Edit Item-->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{url_for('editCategory')}}">Edit Category</a>
+                            </li>
+                            <li>
+                                <a href="{{url_for('editItem')}}">Edit Item</a>
+                        </ul>
+                </li>
+
+                <!--Dropdown menu for Delete Category / Delete Item-->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Delete<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{url_for('deleteCategory')}}">Delete Category</a>
+                            </li>
+                            <li>
+                                <a href="{{url_for('deleteItem')}}">Delete Item</a>
+                            </li>
+                        </ul>
+                </li>
+
+                <!--Login / Logout links-->
+                <li>
+                    <a href="{{url_for('disconnect')}}">Logout</a>
+                    
+                </li>
+            
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<div class="row padding-top padding-bottom">
+</div>

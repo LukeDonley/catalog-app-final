@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "flash.html" %}
+
+<div class="row">
+    <div class="container">
+        <div class="col-md-4 category-list well">
+            <!--List all categories-->
+            <h2>Categories</h2>
+            {% for cat in categories %}
+            <!--Render the currently selected category to be bold and to link back to the main catalog to create a toggle effect-->
+            {% if cat.id == category.id %}
+            <a href = "{{url_for('showCatalog')}}">
+            <h3 class="selected-cat">{{cat.name}}</h3></a>
+            <!--render the ramaining categories normally-->
+            {% else %}
+            <a href = "{{url_for('showCategory', category_id = cat.id)}}">
+                <h3>{{cat.name}}</h3></a>
+            {% endif %}
+            {% endfor %}
+        </div>
+                    
+        <div class="col-md-6 item-list well">
+            <!--Render list of all items belonging to current category-->
+            <h2>{{ category.name }} Items</h2>
+                {% for item in items %}
+                <a href = "{{url_for('showItem', category_id = item.category_id, item_id = item.id)}}">
+                    <h3>{{item.name}}</h3></a>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

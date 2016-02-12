@@ -1,0 +1,34 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "flash.html" %}
+
+    <div class="row banner menu">
+        <div class="col-md-11 col-md-offset-1 padding-none">
+            <h1>Edit Category</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1 padding-top">
+            <form action="{{ url_for('editCategory')}}" method = "post">
+                <div class="form-group">
+                    <label for="category">Category to Edit:</label>
+                    <select name="category">
+                    {% for cat in categories %}
+                        <option value="{{ cat.name }}">{{ cat.name }}</option>
+                    {% endfor %}
+                    </select><br>
+                    <label for="name">New Name:</label>
+                    <input type ="text" class="form-control" name="name" placeholder="Enter new name">
+                    <div class="padding-bottom"></div>
+                    <button type="submit" class="btn btn-default" id="submit" type="submit">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+                    <a href = '{{url_for('showCatalog')}}'>
+                        <button class="btn btn-default delete">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "flash.html" %}
+
+
+<div class="row">
+        <div class="col-md-11 col-md-offset-1 padding-left">
+            <h2>New Item</h2>
+        </div>
+</div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1 padding-top">
+            <form action="#" method = "post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type ="text" maxlength="50" class="form-control" name="name" placeholder="Name of the Item">
+
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" maxlength="250" rows="3" name="description" placeholder="Description of the Item"></textarea>
+
+                    <label for="category">Category:</label>
+                    <select name="category">
+                    {% for cat in categories %}
+                        <option value="{{ cat.name }}">{{ cat.name }}</option>
+                    {% endfor %}
+                    </select>
+
+                    <p>
+                    <button type="submit" class="btn btn-default" id="submit">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create</button>
+                    </p>
+                </div>
+                <div>
+                <h5><em>Note: Items created in categories created by another user are subject to deletion by creator of that category.</em></h5>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
